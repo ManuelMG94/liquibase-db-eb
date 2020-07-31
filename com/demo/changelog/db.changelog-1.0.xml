@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>   
+<databaseChangeLog   
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"   
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">   
+	<changeSet  author="rjaforever"  id="rjaforever-19-07-20-001">  
+	
+		<createTable  tableName="C_PAIS">  
+			<column  name="ID"  type="int">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_PAIS"/>  
+			</column>
+			<column  name="CLAVE"  type="nvarchar(5)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="NOMBRE"  type="nvarchar(100)">  
+				<constraints  nullable="false"/>  
+			</column>
+		</createTable>
+		
+		<createTable  tableName="C_ESTADO">  
+			<column  name="ID"  type="int" autoIncrement="true" remarks="llave primaria de la tabla estado">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_PAIS"/>  
+			</column>
+			<column  name="ID_PAIS"  type="int">  
+				<constraints  nullable="false" foreignKeyName="FK_ESTADO_PAIS" references="C_PAIS(ID)"/>  
+			</column>
+			<column  name="CLAVE"  type="nvarchar(2)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="NOMBRE"  type="nvarchar(40)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="ABREVIATURA"  type="nvarchar(10)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="ACTIVO"  type="boolean">  
+				<constraints  nullable="false"/>  
+			</column>
+		</createTable>  
+	</changeSet>  
+</databaseChangeLog> 
