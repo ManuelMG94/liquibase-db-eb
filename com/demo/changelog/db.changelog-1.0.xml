@@ -7,7 +7,7 @@
 	<changeSet  author="rjaforever"  id="rjaforever-19-07-20-001">  
 	
 		<createTable  tableName="C_PAIS">  
-			<column  name="ID"  type="int">  
+			<column  name="ID"  type="int" autoIncrement="true">  
 				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_PAIS"/>  
 			</column>
 			<column  name="CLAVE"  type="nvarchar(5)">  
