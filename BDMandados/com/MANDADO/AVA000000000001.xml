@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>   
+<databaseChangeLog   
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"   
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+					  
+	<changeSet  author="Manuel Mejia Garcia"  id="AVA000000000001"> 
+		<!-- ***********************************************
+		*****	Nombre responsable: Manuel Mejia Garcia
+		*****	Fecha de creaciòn: 20/08/2020
+		*****	Descripciòn:
+		*****		Archivo contenedor de la ejecucion de Script
+		*****			para pre-poblar de informacion las tablas
+		*****			catalogo de la BD.
+		*****			
+		*****	Condiciones:
+		*****		Haber ejecutado satisfactoriamente el archivo 
+		*****			AVA000000000001.xml
+		*********************************************** -->
+		<sqlFile  dbms="mysql" encoding="UTF-8" path="Scripts/Script_DatosCatalogo_000001.sql"  
+            relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>  
+	
+			
+			<!--
+				<sqlFile  dbms="mysql" encoding="UTF-8" path="Scripts/Script_DatosCatalogo_000002.sql"  
+            relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>  
+			-->
+    </changeSet>  
+		
+	
+
+</databaseChangeLog> 

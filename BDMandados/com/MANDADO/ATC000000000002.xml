@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>   
+<databaseChangeLog   
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"   
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+					  
+	<changeSet  author="Manuel Mejia Garcia"  id="ATC000000000001">  
+		<!-- ***********************************************
+		*****	Nombre responsable: Manuel Mejia Garcia
+		*****	Fecha de creaciòn: 24/08/2020
+		*****	Descripciòn:
+		*****		Archivo contenedor de la creacion de las tablas catalogo.
+		*****			
+		*****	Condiciones:
+		*****		N/A
+		*********************************************** -->
+		
+		<createTable  tableName="TACommerce">  
+			<column  name="fuIdCommerce"  type="nvarchar(20)">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_Commerce"/>
+			</column>
+			<column  name="fiIdBusinessType"  type="int">  
+				<constraints nullable="false" foreignKeyName="fk_Commerce_BusinessType" references="TCBusinessType(id)"/>
+			</column>
+			<column  name="fiIdCommerceStatus"  type="int">  
+				<constraints nullable="false" foreignKeyName="fk_Commerce_Status" references="TCCommerceStatus(id)"/>
+			</column>
+			<column  name="fcBusinessName"  type="nvarchar(150)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcRFC"  type="nvarchar(13)">  
+				<constraints nullable="false" />
+			</column>
+			<column  name="fcDescription"  type="nvarchar(250)">  
+				<constraints nullable="false" />
+			</column>
+			<column  name="fcPresentation"  type="nvarchar(250)">  
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		
+		<createTable  tableName="TAUsers">  
+			<column  name="fuIdUser"  type="nvarchar(20)">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_User"/>  
+			</column>
+			<column  name="fuIdCommerce"  type="nvarchar(20)">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_User"
+					foreignKeyName="fk_Commerce_User" references="TACommerce(fuIdCommerce)"/>  
+			</column>
+			<column  name="fiIdUserType"  type="int">  
+				<constraints nullable="false" foreignKeyName="fk_user_type" references="TCUserType(id)"/>
+			</column>
+			<column  name="fcUSerName"  type="nvarchar(150)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcUserPassword"  type="nvarchar(150)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fiIdUserStatus"  type="int">  
+				<constraints nullable="false" foreignKeyName="fk_user_status" references="TCUserStatus(id)"/>
+			</column>
+		</createTable>
+		
+		<createTable  tableName="TABranchOffice">  
+			<column  name="fuIdBranchOffice"  type="nvarchar(20)">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_BranchOffice"/>
+			</column>
+			<column  name="fuIdCommerce"  type="nvarchar(20)">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_BranchOffice" foreignKeyName="FK_BranchOffice_Commerce" references="TACommerce(fuIdCommerce)" />
+			</column>
+			<column  name="fiIdStatus"  type="int">  
+				<constraints nullable="false" foreignKeyName="Fk_BranchOffice_Status" references="TCBranchOfficeStatus(id)"/>
+			</column>
+			<column  name="fcOpeningTime"  type="nvarchar(10)">  
+				<constraints nullable="false" />
+			</column>
+			<column  name="fcClosingTime"  type="nvarchar(10)">  
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		
+		<createTable  tableName="TABranchOfficeWorkDay">
+			<column  name="fiIdWakeDay"  type="int">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_BranchOfficeWorkDay" 
+					foreignKeyName="FK_BranchOfficeWorkDay_WorkDay" references="TCWakeDay(id)" />
+			</column>
+			<column name="fuIdBranchOffice"  type="nvarchar(20)">
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_BranchOfficeWorkDay" 
+					foreignKeyName="FK_BranchOfficeWorkDay_BranchOffice1" references="TABranchOffice(fuIdBranchOffice)" />
+			</column>
+			<column  name="fuIdCommerce"  type="nvarchar(20)">
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_BranchOfficeWorkDay" 
+					foreignKeyName="FK_BranchOfficeWorkDay_BranchOffice2" references="TABranchOffice(fuIdCommerce)" />
+			</column>
+			<column name="fbIsActive" type="bit">
+				<constraints  nullable="false" />
+			</column>
+		</createTable>
+		
+		<createTable  tableName="TABranchOfficeContact">
+			<column name="id" type="int">
+				<constraints nullable="false" primaryKey="true" primaryKeyName="PK_BranchOfficeContact"  />
+			</column>
+			<column name="fuIdBranchOffice"  type="nvarchar(20)">
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_BranchOfficeContact" 
+					foreignKeyName="FK_BranchOfficeContact_BranchOffice1" references="TABranchOffice(fuIdBranchOffice)" />
+			</column>
+			<column  name="fuIdCommerce"  type="nvarchar(20)">
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_BranchOfficeContact" 
+					foreignKeyName="FK_BranchOfficeContact_BranchOffice2" references="TABranchOffice(fuIdCommerce)" />
+			</column>
+			<column  name="fiIdType"  type="int">
+				<constraints  nullable="false"
+					foreignKeyName="FK_BranchOfficeContact_Type" references="TCBranchOfficeContactType(id)" />
+			</column>
+			<column  name="fcValue"  type="nvarchar(250)">
+				<constraints  nullable="false" />
+			</column>
+		</createTable>
+		
+		<createTable  tableName="TABranchOfficeAddress">
+			<column  name="fuIdBranchOffice"  type="nvarchar(20)">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_BranchOfficeAddress"
+					foreignKeyName="FK_BranchOfficeAddress_BranchOffice1" references="TABranchOffice(fuIdBranchOffice)" />
+			</column>
+			<column  name="fuIdCommerce"  type="nvarchar(20)">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_BranchOfficeAddress" 
+					foreignKeyName="FK_BranchOfficeAddress_BranchOffice2" references="TABranchOffice(fuIdCommerce)" />
+			</column>
+			<column  name="fiIdLocation"  type="int">
+				<constraints  nullable="false"
+					foreignKeyName="FK_BranchOfficeAdd_Locations" references="TCLocations(id)" />
+			</column>
+			<column  name="fcReference"  type="nvarchar(250)">
+				<constraints  nullable="false" />
+			</column>
+			<column  name="fcCP"  type="nvarchar(10)">
+				<constraints  nullable="false" />
+			</column>
+			<column  name="fcLatitud"  type="Double(20,4)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcLongitud"  type="Double(20,4)">  
+				<constraints  nullable="false"/>  
+			</column>
+		</createTable>
+		
+	</changeSet>
+</databaseChangeLog> 

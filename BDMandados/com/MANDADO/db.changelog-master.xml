@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>   
+<databaseChangeLog  
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"  
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">  
+					  
+	<!-- Se crean y poblan tablas catalogo del sistema -->
+	<include  file="com/MANDADO/ATC000000000001.xml"/>
+	<include  file="com/MANDADO/AVA000000000001.xml"/>
+	
+	<!-- Se crean tablas de sistema -->
+	<include  file="com/MANDADO/ATC000000000002.xml"/>
+	
+	
+</databaseChangeLog>

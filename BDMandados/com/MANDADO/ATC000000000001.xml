@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>   
+<databaseChangeLog   
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"   
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+					  
+	<changeSet  author="Manuel Mejia Garcia"  id="ATC000000000001">  
+		<!-- ***********************************************
+		*****	Nombre responsable: Manuel Mejia Garcia
+		*****	Fecha de creaciòn: 20/08/2020
+		*****	Descripciòn:
+		*****		Archivo contenedor de la creacion de las tablas catalogo.
+		*****			
+		*****	Condiciones:
+		*****		N/A
+		*********************************************** -->
+		
+		<createTable  tableName="TCBusinessType">  
+			<column  name="id"  type="int">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_BusinessType"/>  
+			</column>
+			<column  name="fcValue"  type="nvarchar(50)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcDescription"  type="nvarchar(150)">  
+				<constraints  nullable="true"/>  
+			</column>
+		</createTable>
+	
+		<createTable  tableName="TCBusinessCategory">  
+			<column  name="id"  type="int">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_BusinessCategory"/>  
+			</column>
+			<column  name="fiIdBusinessType"  type="int">  
+				<constraints nullable="false" primaryKey="true" primaryKeyName="PK_BusinessCategory" foreignKeyName="fk_categori_tipe" references="TCBusinessType(id)" />  
+			</column>
+
+			<column  name="fcValue"  type="nvarchar(50)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcDescription"  type="nvarchar(150)">  
+				<constraints  nullable="true"/>  
+			</column>
+		</createTable>
+		
+		<createTable  tableName="TCProductStatus">  
+			<column  name="id"  type="int">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_ProductStatus"/>  
+			</column>
+			<column  name="fcValue"  type="nvarchar(50)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcDescription"  type="nvarchar(150)">  
+				<constraints  nullable="true"/>  
+			</column>
+		</createTable>
+		<createTable  tableName="TCCommerceStatus">  
+			<column  name="id"  type="int">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_CommerceStatus"/>  
+			</column>
+			<column  name="fcValue"  type="nvarchar(50)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcDescription"  type="nvarchar(150)">  
+				<constraints  nullable="true"/>  
+			</column>
+		</createTable>
+
+		<createTable  tableName="TCUserType">  
+			<column  name="id"  type="int">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_UserType"/>  
+			</column>
+			<column  name="fcValue"  type="nvarchar(50)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcDescription"  type="nvarchar(150)">  
+				<constraints  nullable="true"/>  
+			</column>
+		</createTable>
+		<createTable  tableName="TCUserStatus">  
+			<column  name="id"  type="int">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_UserStatus"/>  
+			</column>
+			<column  name="fcValue"  type="nvarchar(50)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcDescription"  type="nvarchar(150)">  
+				<constraints  nullable="true"/>  
+			</column>
+		</createTable>
+		
+		<createTable  tableName="TCOperatorStatus">  
+			<column  name="id"  type="int">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_OperatorStatus"/>  
+			</column>
+			<column  name="fcValue"  type="nvarchar(50)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcDescription"  type="nvarchar(150)">  
+				<constraints  nullable="true"/>  
+			</column>
+		</createTable>
+
+		<createTable  tableName="TCVehicleType">  
+			<column  name="id"  type="int">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_VehicleType"/>  
+			</column>
+			<column  name="fcValue"  type="nvarchar(50)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcDescription"  type="nvarchar(150)">  
+				<constraints  nullable="true"/>  
+			</column>
+		</createTable>
+		<createTable  tableName="TCVehicleStatus">  
+			<column  name="id"  type="int">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_VehicleStatus"/>  
+			</column>
+			<column  name="fcValue"  type="nvarchar(50)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcDescription"  type="nvarchar(150)">  
+				<constraints  nullable="true"/>  
+			</column>
+		</createTable>
+		
+		<createTable  tableName="TCBranchOfficeContactType">  
+			<column  name="id"  type="int">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_BranchOfficeContactType"/>  
+			</column>
+			<column  name="fcValue"  type="nvarchar(50)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcDescription"  type="nvarchar(150)">  
+				<constraints  nullable="true"/>  
+			</column>
+		</createTable>
+		
+		<createTable  tableName="TCCountry">  
+			<column  name="id"  type="int">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_Country"/>  
+			</column>
+			<column  name="fcValue"  type="nvarchar(50)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcDescription"  type="nvarchar(150)">  
+				<constraints  nullable="true"/>  
+			</column>
+		</createTable>
+		
+		<createTable  tableName="TCStates">  
+			<column  name="id"  type="int">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_States"/>  
+			</column>
+			<column  name="fiIdCountry"  type="int">  
+				<constraints nullable="false" foreignKeyName="fk_states_country" references="TCCountry(id)"/>
+			</column>
+			<column  name="fcKey"  type="nvarchar(5)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcName"  type="nvarchar(40)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcAbbreviation"  type="nvarchar(10)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fbIsActive"  type="TINYINT(1)">  
+				<constraints  nullable="false"/>  
+			</column>
+		</createTable>
+		
+		<createTable  tableName="TCMunicipality">  
+			<column  name="id"  type="int">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_Municipality"/>  
+			</column>
+			<column  name="fiIdStates"  type="int">  
+				<constraints nullable="false" foreignKeyName="fk_municipality_states" references="TCStates(id)"/>
+			</column>
+			<column  name="fcKey"  type="nvarchar(5)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcName"  type="nvarchar(150)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fbIsActive"  type="TINYINT(1)">  
+				<constraints  nullable="false"/>  
+			</column>
+		</createTable>
+		
+		<createTable  tableName="TCLocations">  
+			<column  name="id"  type="int">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_Locations"/>  
+			</column>
+			<column  name="fiIdMunicipality"  type="int">  
+				<constraints nullable="false" foreignKeyName="fk_Locations_municipality" references="TCMunicipality(id)"/>
+			</column>
+			<column  name="fcKey"  type="nvarchar(5)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcName"  type="nvarchar(100)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcLatitud"  type="nvarchar(15)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcLongitud"  type="nvarchar(15)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcAltitud"  type="nvarchar(15)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcCarta"  type="nvarchar(10)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcAmbito"  type="nvarchar(1)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcPoblacion"  type="int(11)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcMasculino"  type="int(11)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcFemenino"  type="int(11)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcViviendas"  type="int(11)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcLat"  type="decimal(10,7)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcIng"  type="decimal(10,7)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fbIsActive"  type="TINYINT(1)">  
+				<constraints  nullable="false"/>  
+			</column>
+		</createTable>
+		
+		<createTable  tableName="TCWakeDay">  
+			<column  name="id"  type="int">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_WakeDay"/>  
+			</column>
+			<column  name="fcValue"  type="nvarchar(50)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcDescription"  type="nvarchar(150)">  
+				<constraints  nullable="true"/>  
+			</column>
+		</createTable>
+		
+		<createTable  tableName="TCBranchOfficeStatus">  
+			<column  name="id"  type="int">  
+				<constraints  nullable="false" primaryKey="true" primaryKeyName="PK_BranchOfficeStatus"/>  
+			</column>
+			<column  name="fcValue"  type="nvarchar(50)">  
+				<constraints  nullable="false"/>  
+			</column>
+			<column  name="fcDescription"  type="nvarchar(150)">  
+				<constraints  nullable="true"/>  
+			</column>
+		</createTable>
+	</changeSet>  
+	
+	
+	
+	
+</databaseChangeLog> 
